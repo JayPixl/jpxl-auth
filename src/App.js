@@ -29,10 +29,10 @@ function App() {
         setPage(3);
       });
     }
+    setLoading(false);
   }, []);
 
   const auth = async (token, callback) => {
-    setLoading(e => true);
     console.log(`ACCESS TOKEN (PASSED): ${token}`);
     const data = await fetch(API_BASE + "/users/auth/", {
       method: "POST",
@@ -48,7 +48,6 @@ function App() {
     } else {
       callback(data);
     }
-    setLoading(e => false);
     // console.log(`USERNAME: ${user.username}`);
     // console.log(`ACCESS TOKEN (VAR): ${accessToken}`);
   }
