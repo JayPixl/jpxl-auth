@@ -1,38 +1,242 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: sans-serif;
+  height: 100vh;
+  position: relative;
+}
+
+input {
+  margin: 1rem;
+  max-width: 30rem;
+  font-size: 1.3rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid black;
+  transition: 400ms;
+}
+
+input:not(#popupPassword):focus {
+  border-color: white;
+  box-shadow: 0px 0px 200px 5px #7070db;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+h1 {
+  color: white;
+  font-weight: 800;
+}
+
+button {
+  margin: 1rem;
+  background-color: inherit;
+  color: white;
+  border: 2px solid white;
+  font-size: 1.5rem;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  border-radius: 2rem;
+  transition: 300ms;
+}
+
+.form button:hover {
+  color: #1a1a1a;
+  border-color: #7070db;
+  background-color: #7070db;
+  box-shadow: 0px 0px 200px #7070db;
+}
+
+.loggedin {
+  color: white;
+  font-size: 1.2rem;
+  position: absolute;
+  bottom: 1rem;
+}
+
+.topbar {
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+}
+
+.link {
+  color: white;
+  cursor: pointer;
+  padding: 1rem;
+  transition: 300ms;
+}
+
+.link:hover {
+  text-shadow: 0px 0px 10px white;
+}
+
+.error-message {
+  color: red;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.confirmation {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.popup {
+  z-index: 1;
+  background-color: #404040;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+
+.confirmation::before {
+  content: '';
+  background-color: black;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.xbutton {
+  transform: translate(0.5rem, -0.5rem);
+  display: flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+  cursor: pointer;
+  font-weight: 800;
+  padding: 0.5rem;
+  transition: 300ms;
+}
+
+.xbutton:hover {
+  background-color: black;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.warning {
+  color: #b30000;
+  font-size: 0.9rem;
+  background-color: #ffcccc;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  margin: 1rem 0rem;
+  border: #b30000 solid 1px;
 }
 
-@keyframes App-logo-spin {
-  from {
+#popupPassword {
+  padding: 0.8rem;
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.cancelbutton {
+  padding: 0.5rem;
+  font-size: 1.3rem;
+  background-color: #7070db;
+  color: #404040;
+  border: #7070db solid 2px;
+  margin: 0;
+  margin-top: 1rem;
+}
+
+.cancelbutton:hover {
+  background-color: inherit;
+  color: #7070db;
+  border: #7070db solid 2px;
+}
+
+.deletebutton {
+  padding: 0.5rem;
+  font-size: 1.3rem;
+  margin: 0;
+  margin-left: 1rem;
+}
+
+.deletebutton:hover {
+  color: #404040;
+  background-color: #b30000;
+  border: #b30000 solid 2px;
+}
+
+.delete-button {
+  color: #b30000;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.buttons {
+  align-self: flex-end;
+}
+
+.loading-screen {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+.loading-screen::before {
+  position: absolute;
+  content: '';
+  background-color: black;
+  opacity: 0.8;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-container {
+  background-color: #404040;
+  border-radius: 2rem;
+  width: 7rem;
+  height: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.loading-circle {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 9999px;
+  animation: loading-animation infinite 1s;
+  border: 5px solid;
+  border-color: #7070db transparent transparent transparent;
+}
+
+@keyframes loading-animation {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }
