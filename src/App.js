@@ -29,7 +29,7 @@ function App() {
         setPage(3);
       });
     }
-    setLoading(false);
+    setLoading(e => false);
   }, []);
 
   const auth = async (token, callback) => {
