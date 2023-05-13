@@ -11,7 +11,7 @@ import Loading from './components/Loading'
 import Cookie from 'universal-cookie';
 const cookies = new Cookie();
 
-const API_BASE = "http://localhost:3001";
+const API_BASE = process.env.API_BASE;
 
 function App() {
   const [inputVal, setInputVal] = useState({});
