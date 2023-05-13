@@ -11,8 +11,6 @@ import Loading from './components/Loading'
 import Cookie from 'universal-cookie';
 const cookies = new Cookie();
 
-require('dotenv').config('../.env');
-
 const API_BASE = process.env.API_BASE;
 
 function App() {
