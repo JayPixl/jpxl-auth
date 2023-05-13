@@ -29,10 +29,10 @@ function App() {
         setPage(3);
       });
     }
-    setLoading(false);
   }, []);
 
   const auth = async (token, callback) => {
+    setLoading(e => true);
     console.log(`ACCESS TOKEN (PASSED): ${token}`);
     const data = await fetch(API_BASE + "/users/auth/", {
       method: "POST",
@@ -48,7 +48,7 @@ function App() {
     } else {
       callback(data);
     }
-
+    setLoading(e => false);
     // console.log(`USERNAME: ${user.username}`);
     // console.log(`ACCESS TOKEN (VAR): ${accessToken}`);
   }
@@ -64,6 +64,7 @@ function App() {
   }
 
   const deleteUser = async () => {
+    setLoading(e => true);
     setInputVal({...inputVal, ['popupPassword']: ''})
     auth(cookies.get('token'), async () => {
       const data = await fetch(API_BASE + "/users/delete/", {
@@ -86,11 +87,13 @@ function App() {
         logOut();
       }
     })
+    setLoading(e => false);
   }
 
   const submit = async (e) => {
     // Validation
     setErrors(e => []);
+    setLoading(e => true);
     if (page===1) {
       const data = await fetch(API_BASE + "/users/new/", {
         method: "POST",
@@ -141,6 +144,7 @@ function App() {
         });
       }
     }
+    setLoading(e => false);
   }
 
   if (page===1) {
